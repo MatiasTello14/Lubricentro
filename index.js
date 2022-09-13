@@ -1,21 +1,31 @@
-/*estructura de bucle while*/
+let precioServicio = 0;
+let contador = 0;
+let gastoTotal = 0;
 
-let entrada = prompt("Ingrese el nombre de usuario");
+alert ('Usted debera ingresar el precio de los servicios que desea realizarle a su vehiculo');
 
-while (entrada != "ESC") {
-    switch (entrada){
-        case "MATIAS17":
-            alert ("Bievenido Matias");
-            break;
-        case "LUCAS18":
-            alert ("Bienvenido Lucas");
-            break;
-        case "MARTIN19":
-            alert ("Bienvenido Martin");
-            break;
-        default:
-            alert ("NO EXISTE UN USUARIO QUE CONTENGA LOS DATOS INGRESADOS")
+function Precio()  {
+    precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
+
+    while (precioServicio > 0) {
+        gastoTotal = calcularTotal (precioServicio);
+        contador++;
+        precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
     }
 
-    entrada = prompt ("Ingrese el nombre de usuario");
+    if (precioServicio <= 0 || isNaN(precioServicio)){
+        console.log ('el valor ingresado es incorrecto');
+    }
 }
+
+function calcularTotal (servicio){
+    return gastoTotal + servicio;
+}
+
+function Total(){
+    console.log('cantidad de servicios:' + contador);
+    console.log ('el precio total es $' + gastoTotal);
+}
+
+Precio();
+Total();
