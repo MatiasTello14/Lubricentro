@@ -1,31 +1,23 @@
-let precioServicio = 0;
-let contador = 0;
-let gastoTotal = 0;
-
-alert ('Usted debera ingresar el precio de los servicios que desea realizarle a su vehiculo');
-
-function Precio()  {
-    precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
-
-    while (precioServicio > 0) {
-        gastoTotal = calcularTotal (precioServicio);
-        contador++;
-        precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
-    }
-
-    if (precioServicio <= 0 || isNaN(precioServicio)){
-        console.log ('el valor ingresado es incorrecto');
-    }
+function saludar(nombre, apellido){
+    let mensaje = `Bienvenido ${nombre} ${apellido} a Lubricentro Abril!!`;
+    alert (mensaje);
 }
+let nombre = prompt("ingrese su nombre");
+let apellido = prompt("ingrese su apellido");
 
-function calcularTotal (servicio){
-    return gastoTotal + servicio;
-}
+saludar(nombre, apellido);
 
-function Total(){
-    console.log('cantidad de servicios:' + contador);
-    console.log ('el precio total es $' + gastoTotal);
-}
 
-Precio();
-Total();
+const servicios = [
+    {id: 1, nombreServicio: "cambio de aceite", precio: 5000},
+    {id: 2, nombreServicio: "cambio de filtros de aceite, combustible y habitaculo", precio: 6000},
+    {id: 3, nombreServicio: "control de los fluidos", precio: 3000}
+];
+
+let nombreServicio = prompt ("Ingrese el servicio que desea realizarle a su vehiculo");
+let encontrado = servicios.find(servicios => servicios.nombreServicio === nombreServicio);
+let mensaje = `
+    nombre: ${encontrado.nombreServicio};
+    $${encontrado.precio}
+    `
+alert (mensaje);
