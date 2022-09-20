@@ -1,31 +1,17 @@
-let precioServicio = 0;
-let contador = 0;
-let gastoTotal = 0;
+const servicios = [
+    {id: 1, nombre: "Cambio de aceite", precio: 5000},
+    {id: 2, nombre: "Cabio de filtros de aceite, combustible y habitaculo", precio: 6000},
+    {id: 3, nombre: "Control de todos los fluidos", precio: 3000}
+];
 
-alert ('Usted debera ingresar el precio de los servicios que desea realizarle a su vehiculo');
+let precios = servicios.map (item => item.precio);
+let nombreServicios = servicios.map (item => item.nombre);
+let precioFinal = servicios.map (item => { 
+    return {
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio + item.precio * 0.21
+    };
+});
 
-function Precio()  {
-    precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
-
-    while (precioServicio > 0) {
-        gastoTotal = calcularTotal (precioServicio);
-        contador++;
-        precioServicio= Number(prompt ('Ingrese el precio de cada uno de los servicios' + ':'));
-    }
-
-    if (precioServicio <= 0 || isNaN(precioServicio)){
-        console.log ('el valor ingresado es incorrecto');
-    }
-}
-
-function calcularTotal (servicio){
-    return gastoTotal + servicio;
-}
-
-function Total(){
-    console.log('cantidad de servicios:' + contador);
-    console.log ('el precio total es $' + gastoTotal);
-}
-
-Precio();
-Total();
+console.log (precioFinal);
