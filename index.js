@@ -7,17 +7,20 @@ let apellido = prompt("ingrese su apellido");
 
 saludar(nombre, apellido);
 
-
+let listas = document.getElementById("lista")
 const servicios = [
     {id: 1, nombreServicio: "cambio de aceite", precio: 5000},
     {id: 2, nombreServicio: "cambio de filtros de aceite, combustible y habitaculo", precio: 6000},
     {id: 3, nombreServicio: "control de los fluidos", precio: 3000}
 ];
 
-let nombreServicio = prompt ("Ingrese el servicio que desea realizarle a su vehiculo");
-let encontrado = servicios.find(servicios => servicios.nombreServicio === nombreServicio);
-let mensaje = `
-    nombre: ${encontrado.nombreServicio};
-    $${encontrado.precio}
-    `
-alert (mensaje);
+servicios.forEach(servicio => {
+    let item = document.createElement("div");
+    item.innerHTML = `
+    <h2>Id: ${servicio.id}</h2>
+    <p>Producto: ${servicio.nombreServicio}</p>
+    <p>$${servicio.precio}</p>
+    `;
+    listas.className = "verde";
+    listas.append(item)
+});
