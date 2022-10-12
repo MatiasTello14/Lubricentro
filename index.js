@@ -1,7 +1,4 @@
-const div = document.getElementById ("relojes")
-const carro = document.getElementById ("boton")
-
-let productos = [
+const productos = [
     {
       id: 1,
       nombre: "SmartWatch Nitcom Nt02 Smartband", 
@@ -39,6 +36,12 @@ let productos = [
       precio: 3250, imagen:"https://dxelectronica.com.ar/wp-content/uploads/2021/06/Y1-2.jpg", 
       caracteristicas:"Con la más variada gama de colores, este reloj cuenta con un diseño súper moderno y resistente para el uso diario. Cuenta con las principales funciones para llevar una vida sana y plena, pudiendo acceder a todas sus funciones de manera ágil y rápida gracias a su pantalla touch de 1,2."},
 ];
+
+let [a, b, c, d, e, f] = productos;
+console.log(a, b, c, d, e, f);
+
+const div = document.getElementById ("relojes")
+const carro = document.getElementById ("boton")
 
 let carrito = []
 
