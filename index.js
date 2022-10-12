@@ -56,7 +56,16 @@ productos.forEach (producto => {
   `
   div.append(productoRender)
   const boton = document.getElementById (producto.id)
-  boton.addEventListener("click", () => comprarProducto(producto))
+  boton.addEventListener("click", () => { 
+    comprarProducto(producto)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se agrego correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  })
 })
 
 let comprarProducto = (producto) => {
@@ -74,7 +83,31 @@ let comprarProducto = (producto) => {
       cantidad: 1
     })
   }
-  localStorage.setItem("carrito", JSON.stringify(productoExiste))
+  localStorage.setItem("carrito", JSON.stringify(productoExiste));
 }
 
-boton.addEventListener ("click", () => console.log (carrito))
+boton.addEventListener ("click", () => {
+  console.log(carrito)
+  let timerInterval
+Swal.fire({
+  title: 'Cargando productos...',
+  html: 'I will close in <b></b> milliseconds.',
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+})
