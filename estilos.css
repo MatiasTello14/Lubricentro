@@ -105,7 +105,8 @@ main{
 }
 
 .carritoCompra img:hover{
-  background-color: gray;
+  transform: scale(1.05);
+  transition: all 0.5s;
 }
 
 footer {
